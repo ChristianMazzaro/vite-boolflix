@@ -8,6 +8,7 @@ import { store } from '../store.js'
     },
     data(){
       return{
+        vote: 0,
         store
       }
     },
@@ -46,26 +47,30 @@ import { store } from '../store.js'
             return store.seriesThumbs + elem
         },
 
-        voteAdj(){
-           integer = parseInt(store.movies.vote_average)
-            if(integer == 1 || integer == 2){
-                return vote = 1
+        voteAdj(elem){
+            this.vote = parseInt(elem)
+            if(this.vote == 1 || this.vote == 2){
+                return this.vote = 1
             }
 
-            else if(integer == 3 || integer == 4){
-                return vote = 2
+            else if(this.vote == 3 || this.vote == 4){
+                return this.vote = 2
             }
 
-            else if(integer == 5 || integer == 6){
-                return vote = 3
+            else if(this.vote == 5 || this.vote == 6){
+                return this.vote = 3
             }
 
-            else if(integer == 7 || integer == 8){
-                return vote = 4
+            else if(this.vote == 7 || this.vote == 8){
+                return this.vote = 4
             }
 
-            else if(integer == 9 || integer == 10){
-                return vote = 5
+            else if(this.vote == 9 || this.vote == 10){
+                return this.vote = 5
+            }
+
+            else{
+                return this.vote = 0
             }
         },  
 
@@ -93,8 +98,43 @@ import { store } from '../store.js'
                         <img class="flag" :src="LangFlag(movie.original_language)" alt="">
                         {{ movie.original_language }}
                     </li>
-                    <li>
-                        {{ movie.vote_average }}
+                    <li v-if="voteAdj(movie.vote_average)">
+                        <span v-if="vote==1">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </span>
+                        <span v-if="vote==2">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </span>
+                        <span v-if="vote==3">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </span>
+                        <span v-if="vote==4">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </span>
+                        <span v-if="vote==5">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </span>
+                        {{ vote }}
                     </li>
                 </ul>
                  
@@ -118,11 +158,45 @@ import { store } from '../store.js'
                         <img class="flag" :src="LangFlag(series.original_language)" alt="">
                         {{ series.original_language }}
                     </li>
-                    <li>
-                        {{ series.vote_average }}
+                    <li v-if="voteAdj(series.vote_average)">
+                        <span v-if="vote==1">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </span>
+                        <span v-if="vote==2">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </span>
+                        <span v-if="vote==3">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </span>
+                        <span v-if="vote==4">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </span>
+                        <span v-if="vote==5">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </span>
+                        {{ vote }}
                     </li>
                 </ul>
-                <hr>
             </li>
         </ul>
     </main>
@@ -137,7 +211,8 @@ import { store } from '../store.js'
 
     li{
       list-style: none;
-      background-color: rgb(90, 163, 90);
+      background-color: black;
+      color: white;
 
       .flag{
         width: 20px;
@@ -145,6 +220,10 @@ import { store } from '../store.js'
 
       .thumb{
         width: 100px;
+      }
+
+      i{
+        color: yellow;
       }
     }
 </style>

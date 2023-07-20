@@ -53,13 +53,13 @@ import AppMain from '../src/components/AppMain.vue'
   <AppHeader @MovieSearch="startSearch()" />
   <AppMain />
     <footer>
-      footer
+      <i class="fa-solid fa-house"></i>
     </footer>
 
 </template>
 
 <style lang="scss">
-
+@use '../src/assets/scss/main.scss'
 
 
 </style>
