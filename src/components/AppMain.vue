@@ -40,34 +40,41 @@ import { store } from '../store.js'
             else{
                 return 'https://flagicons.lipis.dev/flags/4x3/xx.svg';
             }
-        }
+        },
+
+        getThumbs(ele){
+            return store.seriesThumbs + ele
+        },
+
     }
   }
 </script>
 
 <template>
     <main>
+        
         <h1>
             film
         </h1>
         <ul>
-            <li v-for="(movie, i) in store.movies" :key="i">
+            <li class="movie_container" v-for="(movie, i) in store.movies" :key="i">
+                <img class="thumb" :src="getThumbs(movie.poster_path)" :alt="movie.title">
                 <ul class="movie-info">
                     <li>
-                    {{ movie.title }}
+                        {{ movie.title }}
                     </li>
                     <li>
-                    {{ movie.original_title }}
+                        {{ movie.original_title }}
                     </li>
                     <li>
-                        <img :src="LangFlag(movie.original_language)" alt="">
-                    {{ movie.original_language }}
+                        <img class="flag" :src="LangFlag(movie.original_language)" alt="">
+                        {{ movie.original_language }}
                     </li>
                     <li>
-                    {{ movie.vote_average }}
+                        {{ movie.vote_average }}
                     </li>
                 </ul>
-                 <hr>
+                 
             </li>
         </ul>
 
@@ -75,20 +82,21 @@ import { store } from '../store.js'
             Serie tv
         </h1>
         <ul>
-            <li v-for="(series, i) in store.tvSeries" :key="i">
+            <li class="movie_container" v-for="(series, i) in store.tvSeries" :key="i">
+                <img class="thumb" :src="getThumbs(series.poster_path)" :alt="series.name">
                 <ul class="movie-info">
                     <li>
-                    {{ series.name }}
+                        {{ series.name }}
                     </li>
                     <li>
-                    {{ series.original_name }}
+                        {{ series.original_name }}
                     </li>
                     <li>
-                        <img :src="LangFlag(series.original_language)" alt="">
-                    {{ series.original_language }}
+                        <img class="flag" :src="LangFlag(series.original_language)" alt="">
+                        {{ series.original_language }}
                     </li>
                     <li>
-                    {{ series.vote_average }}
+                        {{ series.vote_average }}
                     </li>
                 </ul>
                 <hr>
@@ -99,14 +107,21 @@ import { store } from '../store.js'
 
 <style lang="scss" scoped>
 
-
+    .movie_container{
+        display: flex;
+        margin-bottom: 20px;
+    }
 
     li{
       list-style: none;
       background-color: rgb(90, 163, 90);
 
-      img{
+      .flag{
         width: 20px;
+      }
+
+      .thumb{
+        width: 100px;
       }
     }
 </style>
