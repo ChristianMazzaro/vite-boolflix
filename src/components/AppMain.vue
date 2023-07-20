@@ -42,9 +42,32 @@ import { store } from '../store.js'
             }
         },
 
-        getThumbs(ele){
-            return store.seriesThumbs + ele
+        getThumbs(elem){
+            return store.seriesThumbs + elem
         },
+
+        voteAdj(){
+           integer = parseInt(store.movies.vote_average)
+            if(integer == 1 || integer == 2){
+                return vote = 1
+            }
+
+            else if(integer == 3 || integer == 4){
+                return vote = 2
+            }
+
+            else if(integer == 5 || integer == 6){
+                return vote = 3
+            }
+
+            else if(integer == 7 || integer == 8){
+                return vote = 4
+            }
+
+            else if(integer == 9 || integer == 10){
+                return vote = 5
+            }
+        },  
 
     }
   }
