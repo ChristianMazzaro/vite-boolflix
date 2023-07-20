@@ -47,27 +47,53 @@ import { store } from '../store.js'
 
 <template>
     <main>
-      <ul>
-        <li v-for="(movie, i) in store.movies" :key="i">
-          <ul class="movie-info">
-            <li>
-              {{ movie.title }}
+        <h1>
+            film
+        </h1>
+        <ul>
+            <li v-for="(movie, i) in store.movies" :key="i">
+                <ul class="movie-info">
+                    <li>
+                    {{ movie.title }}
+                    </li>
+                    <li>
+                    {{ movie.original_title }}
+                    </li>
+                    <li>
+                        <img :src="LangFlag(movie.original_language)" alt="">
+                    {{ movie.original_language }}
+                    </li>
+                    <li>
+                    {{ movie.vote_average }}
+                    </li>
+                </ul>
+                 <hr>
             </li>
-            <li>
-              {{ movie.original_title }}
+        </ul>
+
+        <h1>
+            Serie tv
+        </h1>
+        <ul>
+            <li v-for="(series, i) in store.tvSeries" :key="i">
+                <ul class="movie-info">
+                    <li>
+                    {{ series.name }}
+                    </li>
+                    <li>
+                    {{ series.original_name }}
+                    </li>
+                    <li>
+                        <img :src="LangFlag(series.original_language)" alt="">
+                    {{ series.original_language }}
+                    </li>
+                    <li>
+                    {{ series.vote_average }}
+                    </li>
+                </ul>
+                <hr>
             </li>
-            <li>
-                <img :src="LangFlag(movie.original_language)" alt="">
-              {{ movie.original_language }}
-            </li>
-            <li>
-              {{ movie.vote_average }}
-            </li>
-          </ul>
-          <hr>
-        </li>
-        
-      </ul>
+        </ul>
     </main>
 </template>
 

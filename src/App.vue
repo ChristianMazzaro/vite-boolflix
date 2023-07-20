@@ -22,13 +22,26 @@ import AppMain from '../src/components/AppMain.vue'
           .get('https://api.themoviedb.org/3/search/movie', {
             params:{
               api_key: 'bf4fd15b528c50cc3aba5a346e201b7f',
-              query: this.store.searchtext
+              query: this.store.searchtext,
             }
           })
 
           .then(response =>{
             console.log(response.data)
             this.store.movies = response.data.results;
+          });
+
+        axios
+          .get('https://api.themoviedb.org/3/search/tv',{
+            params:{
+              api_key: 'bf4fd15b528c50cc3aba5a346e201b7f',
+              query: this.store.searchtext,
+            }
+          })
+
+          .then(response =>{
+            console.log(response.data)
+            this.store.tvSeries = response.data.results;
           });
 
       }
