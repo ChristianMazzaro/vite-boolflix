@@ -186,7 +186,7 @@ import singleList from './singleList.vue'
 
     .movie_container{
         display: flex;
-        width: calc(100% / 4);
+        width: calc(100% / 6);
 
         >*{
             display: inline-block;
