@@ -46,8 +46,8 @@ import { store } from '../store.js'
             }
         },
 
-        voteAdj(elem){
-            this.vote = Math.ceil(elem / 2)
+        voteAdj(){
+            this.vote = Math.ceil(this.listData.vote_average / 2)
             console.log(this.vote)
         },  
     },
@@ -65,7 +65,7 @@ import { store } from '../store.js'
 </script>
 
 <template>
-    <img class="thumb" :src="getThumbs()" :alt="listData.title">
+    <img class="thumb" :src="getThumbs()" :alt="listData.title ?? listData.name">
     <ul class="movie-info">
         <li>
             {{ listData.title ?? listData.name }}
@@ -74,7 +74,7 @@ import { store } from '../store.js'
             {{ listData.original_title ?? listData.original_name }}
         </li>
         <li>
-            <img class="flag" :src="LangFlag()" alt="">
+            <img class="flag" :src="LangFlag()" :alt="listData.title ?? listData.name">
             {{ listData.original_language }}
         </li>
         <li>

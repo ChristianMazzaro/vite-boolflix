@@ -80,88 +80,112 @@ import singleList from './singleList.vue'
 
 <template>
     <main>
-        
-        <h1>
-            film
-        </h1>
-        <ul>
-            <li class="movie_container" v-for="(movie, i) in store.movies" :key="i">
-                <singleList :listData="movie"/>
-            </li>
-        </ul>
+        <div class="movies">
+            <h1>
+                film
+            </h1>
+            <ul class="cards-container">
+                <li class="movie_container" v-for="(movie, i) in store.movies" :key="i">
+                    <singleList :listData="movie"/>
+                </li>
+            </ul>
+        </div>
 
-        <h1>
-            Serie tv
-        </h1>
-        <ul>
-            <li class="movie_container" v-for="(series, i) in store.tvSeries" :key="i">
-                <singleList :listData="series"/>
-                <!-- <img class="thumb" :src="getThumbs(series.poster_path)" :alt="series.name">
-                <ul class="movie-info">
-                    <li>
-                        {{ series.name }}
-                    </li>
-                    <li>
-                        {{ series.original_name }}
-                    </li>
-                    <li>
-                        <img class="flag" :src="LangFlag(series.original_language)" alt="">
-                        {{ series.original_language }}
-                    </li>
-                    <li v-if="voteAdj(series.vote_average)">
-                        <span v-if="vote==1">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-regular fa-star"></i>
-                        </span>
-                        <span v-if="vote==2">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-regular fa-star"></i>
-                        </span>
-                        <span v-if="vote==3">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-regular fa-star"></i>
-                        </span>
-                        <span v-if="vote==4">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-regular fa-star"></i>
-                        </span>
-                        <span v-if="vote==5">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </span>
-                        {{ vote }}
-                    </li>
-                </ul> -->
-            </li>
-        </ul>
+        <div class="tv_series">
+            <h1>
+                Serie tv
+            </h1>
+            <ul class="cards-container">
+                <li class="movie_container" v-for="(series, i) in store.tvSeries" :key="i">
+                    <singleList :listData="series"/>
+                    <!-- <img class="thumb" :src="getThumbs(series.poster_path)" :alt="series.name">
+                    <ul class="movie-info">
+                        <li>
+                            {{ series.name }}
+                        </li>
+                        <li>
+                            {{ series.original_name }}
+                        </li>
+                        <li>
+                            <img class="flag" :src="LangFlag(series.original_language)" alt="">
+                            {{ series.original_language }}
+                        </li>
+                        <li v-if="voteAdj(series.vote_average)">
+                            <span v-if="vote==1">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                            </span>
+                            <span v-if="vote==2">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                            </span>
+                            <span v-if="vote==3">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                            </span>
+                            <span v-if="vote==4">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                            </span>
+                            <span v-if="vote==5">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </span>
+                            {{ vote }}
+                        </li>
+                    </ul> -->
+                </li>
+            </ul>
+        </div>
+
     </main>
 </template>
 
 <style lang="scss" scoped>
 
+    main{
+        background-color: black;
+        height: calc(100vh - 91px);
+        width: 100%;
+        overflow-y: auto;
+
+        .movies{
+            margin-bottom: 40px;
+            border-bottom: 2px solid darkred;
+            padding: 3%;
+        }
+
+        h1{
+            color: white;
+        }
+    }
+
     .movie_container{
         display: flex;
-        margin-bottom: 20px;
+        width: calc(100% / 4);
+
+        >*{
+            display: inline-block;
+        }
     }
 
     li{
       list-style: none;
-      background-color: black;
       color: white;
 
       .flag{
@@ -175,5 +199,11 @@ import singleList from './singleList.vue'
       i{
         color: yellow;
       }
+    }
+
+    .cards-container{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
     }
 </style>

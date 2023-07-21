@@ -50,12 +50,13 @@ import AppMain from '../src/components/AppMain.vue'
 </script>
 
 <template>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  </head>
   <AppHeader @MovieSearch="startSearch()" />
   <AppMain />
-    <footer>
-      <i class="fa-solid fa-house"></i>
-    </footer>
-
 </template>
 
 <style lang="scss">

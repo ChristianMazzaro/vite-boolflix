@@ -28,9 +28,9 @@ import { store } from '../store.js'
           <input v-model="store.searchtext" type="text" placeholder="inserisci il nome di un film od una serie tv...">
           <button @click="$emit('MovieSearch')">Invio</button>
         </div>
-
       </div>
     </header>
+    <hr style="color: darkred;">
 </template>
 
 <style lang="scss" scoped>
@@ -40,8 +40,10 @@ import { store } from '../store.js'
     justify-content: space-between;
     background-color: black;
     height: 90px;
+    width: 100vw;
 
     .logo{
+      padding-left: 80px;
       width: 100%;
       height: 100%;
       img{
@@ -63,6 +65,8 @@ import { store } from '../store.js'
         background-color: darkred;
         border: 0;
         padding: 8px;
+        font-size: 18px;
+        text-align: center;
       }
 
       input:hover{
@@ -77,6 +81,8 @@ import { store } from '../store.js'
         color: white;
         border-radius: 8px;
         padding: 8px;
+        font-size: 18px;
+
       }
 
       button:hover{
@@ -86,6 +92,7 @@ import { store } from '../store.js'
         font-weight: bolder;
       }
     }
+
   }
 
 
