@@ -81,9 +81,12 @@ import singleList from './singleList.vue'
 <template>
     <main>
         <div class="movies">
-            <h1>
-                film
-            </h1>
+            <div class="shows_head">
+                <h1>
+                    MOVIES
+                </h1>
+            </div>
+
             <ul class="cards-container">
                 <li class="movie_container" v-for="(movie, i) in store.movies" :key="i">
                     <singleList :listData="movie"/>
@@ -92,9 +95,12 @@ import singleList from './singleList.vue'
         </div>
 
         <div class="tv_series">
-            <h1>
-                Serie tv
-            </h1>
+            <div class="shows_head">
+                <h1>
+                    TV SERIES
+                </h1>
+            </div>
+
             <ul class="cards-container">
                 <li class="movie_container" v-for="(series, i) in store.tvSeries" :key="i">
                     <singleList :listData="series"/>
@@ -160,19 +166,22 @@ import singleList from './singleList.vue'
 
     main{
         background-color: black;
-        height: calc(100vh - 91px);
+        height: calc(100vh - 92px);
         width: 100%;
         overflow-y: auto;
 
-        .movies{
-            margin-bottom: 40px;
-            border-bottom: 2px solid darkred;
-            padding: 3%;
+        .shows_head{
+            text-align: center;
+            background-color: darkred;
+            width: 100%;
+
+            h1{
+                color: white;
+
+            }
         }
 
-        h1{
-            color: white;
-        }
+
     }
 
     .movie_container{
@@ -204,6 +213,7 @@ import singleList from './singleList.vue'
     .cards-container{
         display: flex;
         flex-wrap: wrap;
+        padding: 20px;
         gap: 20px;
     }
 </style>
