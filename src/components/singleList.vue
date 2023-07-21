@@ -47,30 +47,8 @@ import { store } from '../store.js'
         },
 
         voteAdj(elem){
-            this.vote = parseInt(elem)
-            if(this.vote == 1 || this.vote == 2){
-                return this.vote = 1
-            }
-
-            else if(this.vote == 3 || this.vote == 4){
-                return this.vote = 2
-            }
-
-            else if(this.vote == 5 || this.vote == 6){
-                return this.vote = 3
-            }
-
-            else if(this.vote == 7 || this.vote == 8){
-                return this.vote = 4
-            }
-
-            else if(this.vote == 9 || this.vote == 10){
-                return this.vote = 5
-            }
-
-            else{
-                return this.vote = 0
-            }
+            this.vote = Math.ceil(elem / 2)
+            console.log(this.vote)
         },  
     },
     props: {
@@ -99,42 +77,16 @@ import { store } from '../store.js'
             <img class="flag" :src="LangFlag()" alt="">
             {{ listData.original_language }}
         </li>
-        <li v-if="voteAdj(listData.vote_average)">
-            <span v-if="vote==1">
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-regular fa-star"></i>
-                <i class="fa-regular fa-star"></i>
-                <i class="fa-regular fa-star"></i>
-                <i class="fa-regular fa-star"></i>
-            </span>
-            <span v-if="vote==2">
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-regular fa-star"></i>
-                <i class="fa-regular fa-star"></i>
-                <i class="fa-regular fa-star"></i>
-            </span>
-            <span v-if="vote==3">
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-regular fa-star"></i>
-                <i class="fa-regular fa-star"></i>
-            </span>
-            <span v-if="vote==4">
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-regular fa-star"></i>
-            </span>
-            <span v-if="vote==5">
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
+        <li>
+            <span v-for="number in vote" :key="number">
                 <i class="fa-solid fa-star"></i>
             </span>
+            <span v-for="number in (5 - vote)" :key="number">
+                <i class="fa-regular fa-star"></i>
+            </span>
+            
+        </li>
+        <li>
             {{ vote }}
         </li>
     </ul>
