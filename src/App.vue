@@ -16,7 +16,7 @@ import AppMain from '../src/components/AppMain.vue'
     },
     methods:{
       startSearch(){
-        alert(this.store.searchtext)
+        
 
         axios
           .get('https://api.themoviedb.org/3/search/movie', {
