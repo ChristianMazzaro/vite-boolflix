@@ -69,16 +69,20 @@ import { store } from '../store.js'
     <img class="thumb" :src="getThumbs()" :alt="listData.title ?? listData.name">
     <ul class="movie-info">
         <li>
+            <span class="info-titles">Titolo: </span>
             {{ listData.title ?? listData.name }}
         </li>
         <li>
+            <span class="info-titles">Titolo Originale: </span>
             {{ listData.original_title ?? listData.original_name }}
         </li>
         <li>
+            <span class="info-titles">Lingua originale: </span>
             <img class="flag" :src="LangFlag()" :alt="listData.title ?? listData.name">
             {{ listData.original_language }}
         </li>
         <li>
+            <span class="info-titles">Voto: </span>
             <span v-for="number in vote" :key="number">
                 <i class="fa-solid fa-star"></i>
             </span>
@@ -90,6 +94,10 @@ import { store } from '../store.js'
         <li>
             {{ voteAdj() }}
         </li>
+        <li>
+            <span class="info-titles">Overview: </span>
+            {{ listData.overview }}
+        </li>
     </ul>
 </template>
 
@@ -100,16 +108,21 @@ import { store } from '../store.js'
       background-color: black;
       color: white;
 
-      .flag{
-        width: 20px;
-      }
+        .flag{
+            width: 20px;
+        }
 
-      .thumb{
-        width: 100px;
-      }
+        i{
+            color: yellow;
+        }
 
-      i{
-        color: yellow;
-      }
+        .movie-info{
+            display: none;
+
+            .info-titles{
+                font-size: 18px;
+                color: darkred;
+            }
+        }
     }
 </style>

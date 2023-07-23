@@ -60,7 +60,20 @@ import AppMain from '../src/components/AppMain.vue'
 </template>
 
 <style lang="scss">
-@use '../src/assets/scss/main.scss'
+  @use '../src/assets/scss/main.scss';
 
+  .movie_container:hover{
+
+    .thumb{
+      display: none;
+    }
+
+    .movie-info{
+      display: block;
+      outline: 3px solid darkred;
+      width: 100%;
+      padding: 20px;
+    }
+  }
 
 </style>
