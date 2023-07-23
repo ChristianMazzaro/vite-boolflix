@@ -49,6 +49,7 @@ import { store } from '../store.js'
         voteAdj(){
             this.vote = Math.ceil(this.listData.vote_average / 2)
             console.log(this.vote)
+            return this.vote
         },  
     },
     props: {
@@ -87,7 +88,7 @@ import { store } from '../store.js'
             
         </li>
         <li>
-            {{ vote }}
+            {{ voteAdj() }}
         </li>
     </ul>
 </template>
